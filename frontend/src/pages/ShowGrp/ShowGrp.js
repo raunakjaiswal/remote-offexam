@@ -103,38 +103,42 @@ function ShowGrp(props) {
     let Table = data.studentlist.map((val, key) => {
       if (key % 2 === 1) {
         return (
-          <tr key={key} className={classes.td1}>
-            <td className={classes.td}>{val.name}</td>
-            <td className={classes.td}>{val.phonenumber}</td>
-            <td className={classes.td}>{val.rollnumber}</td>
-            <td className={classes.td}>
-              <span className={classes.span}>
-                <i
-                  className="fa fa-trash"
-                  aria-hidden="true"
-                  onClick={() => dltUsr(val._id)}
-                ></i>
-              </span>
-            </td>
-            <td className={classes.td}></td>
-          </tr>
+          <tbody key={key}>
+            <tr className={classes.td1}>
+              <td className={classes.td}>{val.name}</td>
+              <td className={classes.td}>{val.phonenumber}</td>
+              <td className={classes.td}>{val.rollnumber}</td>
+              <td className={classes.td}>
+                <span className={classes.span}>
+                  <i
+                    className="fa fa-trash"
+                    aria-hidden="true"
+                    onClick={() => dltUsr(val._id)}
+                  ></i>
+                </span>
+              </td>
+              <td className={classes.td}></td>
+            </tr>
+          </tbody>
         );
       } else {
         return (
-          <tr key={key} className={classes.td2}>
-            <td className={classes.td}>{val.name}</td>
-            <td className={classes.td}>{val.phonenumber}</td>
-            <td className={classes.td}>{val.rollnumber}</td>
-            <td className={classes.td}>
-              <span className={classes.span}>
-                <i
-                  className="fa fa-trash"
-                  aria-hidden="true"
-                  onClick={() => dltUsr(val._id)}
-                ></i>
-              </span>
-            </td>
-          </tr>
+          <tbody key={key}>
+            <tr className={classes.td2}>
+              <td className={classes.td}>{val.name}</td>
+              <td className={classes.td}>{val.phonenumber}</td>
+              <td className={classes.td}>{val.rollnumber}</td>
+              <td className={classes.td}>
+                <span className={classes.span}>
+                  <i
+                    className="fa fa-trash"
+                    aria-hidden="true"
+                    onClick={() => dltUsr(val._id)}
+                  ></i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
         );
       }
     });
@@ -143,12 +147,14 @@ function ShowGrp(props) {
       <>
         <div className={classes.showtable}>
           <table className={classes.table}>
-            <tr className={classes.tr}>
-              <th className={classes.th}>Name</th>
-              <th className={classes.th}>Mobile No.</th>
-              <th className={classes.th}>Roll No.</th>
-              <th className={classes.th}></th>
-            </tr>
+            <thead>
+              <tr className={classes.tr}>
+                <th className={classes.th}>Name</th>
+                <th className={classes.th}>Mobile No.</th>
+                <th className={classes.th}>Roll No.</th>
+                <th className={classes.th}></th>
+              </tr>
+            </thead>
             {Table}
           </table>
         </div>

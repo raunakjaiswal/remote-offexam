@@ -39,16 +39,16 @@
 }
 
 .bottomleft {
-  width: 45%;
+  width: 65%;
   background-color: #30e3ca;
-  padding: 1em;
+  /* padding: 1em; */
   border-radius: 10px;
 }
 
 .bottomright {
-  width: 45%;
+  width: 25%;
   background-color: #30e3ca;
-  padding: 1em;
+  /* padding: 1em; */
   border-radius: 10px;
 }
 
@@ -62,7 +62,7 @@
   display: inline-block;
   width: 40%;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: auto 2px;
   border-radius: 10px;
 }
 
@@ -75,8 +75,8 @@
 }
 
 .table {
-  /* background-color: #11999e; */
-  width: 90%;
+  background-color: #11999e;
+  width: 100%;
   height: 90%;
 }
 
@@ -90,11 +90,15 @@
 .td1 {
   text-align: center;
   color: rgb(255, 255, 255);
-  /* background-color: #30e3ca; */
+  /* background-color: #11999e; */
+  background-color: #30e3ca;
 }
 
 .td2 {
   text-align: center;
-  color: black;
-  /* background-color: #30e3ca; */
+  color: #000000;
+}
+
+.span {
+  cursor: pointer;
 }

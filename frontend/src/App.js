@@ -11,6 +11,7 @@ import CrtTest from "./pages/createTest/CrtTest";
 import ShowGrp from "./pages/ShowGrp/ShowGrp";
 import TestShow from "./pages/Test/TestShow";
 import ShowTest from "./pages/ShowTest/ShowTest";
+import VerifySt from "./pages/VF/VerifyStudent";
 
 import {
   BrowserRouter as Router,
@@ -68,6 +69,7 @@ function App() {
               <Route path="/show-group/:id" component={ShowGrp} />
 
               <Route path="/show-test/:id" component={ShowTest} />
+              <Route path="/verify-students" component={VerifySt} />
             </>
           )}
 
