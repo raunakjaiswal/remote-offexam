@@ -1,0 +1,35 @@
+.modal-bg {
+  background: #24252d;
+  border-radius: 15px;
+}
+
+.modal-header {
+  padding: 5% 0;
+  justify-content: center;
+  border-bottom: 1px solid #41464b;
+}
+
+.offer-button:hover {
+  text-decoration: none;
+  color: #da18a3;
+}
+
+.modal-footer {
+  justify-content: space-evenly;
+  border-top: 1px solid #41464b;
+}
+
+.modal-buy-img {
+  width: 40%;
+  float: left;
+  margin-right: 4%;
+}
+
+.modal-row1 {
+  margin: 5% 0;
+}
+
+.modal-buy-img1 {
+  width: 50%;
+  margin-right: 4%;
+}

@@ -1,0 +1,157 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* text-align: center; */
+}
+
+.Box {
+  border-top: 0.1px solid #4e4e4e;
+  border-bottom: 0.1px solid #4e4e4e;
+  bottom: 0;
+  width: 100%;
+  background-color: #30e3ca;
+  @media (max-width: 500px) {
+    padding: 70px 30px;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+  width: 200px;
+  /* // width: 50%;
+  // margin: auto; */
+}
+
+.Column0 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+  /* align-items: center; */
+  width: 200px;
+  /* width: 50%;
+  margin: auto; */
+}
+
+.Column2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  /* width: 50%;
+  margin: auto; */
+}
+
+.Column1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 200px;
+  /* // width: 50%;
+  // margin: auto; */
+}
+
+.Row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem 0rem;
+}
+
+.Row > div {
+  width: 40%;
+}
+
+.FooterLink {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 0.5rem 0rem;
+  /* width: 50%; */
+}
+/* 
+.FooterLink:hover {
+  background-color: #6d76f7;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+} */
+
+.FooterLink1 {
+  color: #fff;
+  text-decoration: none;
+  padding: 0rem 0.75rem;
+  /* width: 50%; */
+}
+/* 
+.FooterLink1:hover {
+  background-color: #6d76f7;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+} */
+
+.Row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem 0rem;
+}
+
+.Row1 > div {
+  width: 40%;
+}
+
+.Heading {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.Heading1 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.wrapper1 {
+  display: flex;
+  min-width: 100px;
+  width: 100%;
+}
+
+.email {
+  color: #40514e;
+  border: 1px solid #e4f9f5;
+  height: 40px;
+  width: 40%;
+  padding: 2px 10px 2px 10px;
+  background-color: #e4f9f5;
+  border-radius: 10px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #40514e;
+  opacity: 1; /* Firefox */
+}
+
+.search:hover,
+.search:focus {
+  border: 1.5px solid #009688;
+}
+
+input[type="submit"] {
+  background: #11999e;
+  border-radius: 10px;
+  /* width: 20%; */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}

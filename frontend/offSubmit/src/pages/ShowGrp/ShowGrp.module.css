@@ -1,0 +1,63 @@
+.mainbody {
+  width: 100%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.showtable {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table {
+  background-color: #11999e;
+  width: 80%;
+  /* width: 800px;
+  height: 200px; */
+}
+
+.th {
+  text-align: center;
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+.td1 {
+  text-align: center;
+  color: black;
+  /* background-color: #30e3ca; */
+}
+
+.td2 {
+  text-align: center;
+  color: black;
+  background-color: #30e3ca;
+}
+
+.button1 {
+  padding: 2%;
+  background-color: rgb(255, 153, 0);
+  border-radius: 10px;
+}
+
+.span {
+  cursor: pointer;
+}
+
+.addinfo {
+  /* width: 40%; */
+  /* background-color: #30e3ca; */
+  border-radius: 10px;
+  margin: auto;
+}
+
+.fixed {
+  /* position: fixed; */
+}

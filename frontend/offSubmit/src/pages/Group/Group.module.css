@@ -1,0 +1,10 @@
+.top_body {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  text-decoration-color: black;
+  margin: 5% auto;
+}

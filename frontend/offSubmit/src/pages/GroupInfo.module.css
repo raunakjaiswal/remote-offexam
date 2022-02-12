@@ -1,0 +1,27 @@
+.Bids {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 5%;
+}
+
+.Topbidsbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #11999e;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  width: 20%;
+  margin: 2%;
+  text-decoration: none;
+}
+
+/* .Pointer1 {
+  margin: auto;
+} */
+.Pointer2 {
+  font-size: 9px;
+}

@@ -1,0 +1,70 @@
+.NavBar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.nav-item {
+  margin: 0 1rem;
+  padding: 1px 2px;
+}
+
+.navbar-logo {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  font-size: x-large;
+}
+
+.fa-react {
+  margin-left: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-links:hover {
+  text-decoration: none;
+  color: #11999e;
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.button-1 {
+  color: #ffffff;
+  /* font-weight: bold; */
+  width: auto;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  min-width: 100px;
+  width: 35%;
+  margin: 0px 5%;
+}
+
+.hidden-button {
+  display: none;
+  /* visibility: hidden; */
+}
+
+.bg-custom {
+  background-color: #30e3ca;
+}
