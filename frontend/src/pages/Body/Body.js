@@ -15,7 +15,7 @@ function Body(props) {
           <p>
             Students living in remote areas are experiencing difficulties
             getting question papers and submitting scanned answer pdfs due to
-            internet issues So, we Remote Exam will help you to resolve this
+            internet issues So, we Remote offExam will help you to resolve this
             Problem.
           </p>
         </div>
