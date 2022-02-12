@@ -41,10 +41,12 @@ const TestSchema = new mongoose.Schema({
         rollnumber: {
             type: String,
             required: true,
+            unique: true,
         },
         anssheet: {
           type: String,
-          required: true
+          required: true,
+          
         },
         submissiontime: {
             type: Date,
@@ -58,7 +60,8 @@ const TestSchema = new mongoose.Schema({
     shakeysubmit: [{
        rollnumber: {
            type: String,
-           required: true
+           required: true,
+           unique: true,
            
        },
        key:{
@@ -69,6 +72,21 @@ const TestSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    }],
+    sendmessagestatus: [{
+         rollnumber: {
+             type: String,
+             required: true,
+             unique: true,
+         },
+         uri: {
+             type: String,
+             required: true,
+         },
+         sid: {
+             type: String,
+             required: true,
+         }
     }],
     group: {
         type: mongoose.Schema.Types.ObjectId,

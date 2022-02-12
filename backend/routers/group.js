@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Group= require('../models/groups');
-
+const messagefeedback=require('../function/messagefeedback')
 
 //create group
 router.post('/creategroup',auth,async(req,res)=>{
@@ -52,6 +52,7 @@ router.get('/getgroup/:id', auth, async(req,res)=>{
 
 // add student to list
 router.post('/getgroup/adduser/:id', auth,async(req,res)=>{
+
    const _id=  req.params.id;
    let name= req.body.name;
    let rollnumber = req.body.rollnumber;
@@ -62,6 +63,11 @@ router.post('/getgroup/adduser/:id', auth,async(req,res)=>{
            name: name,
            rollnumber: rollnumber,
            phonenumber: phonenumber,
+       }
+       let found = group.studentlist.some(el => el.rollnumber === rollnumber);
+       if(found)
+       {
+           return res.send("this roll number alteady exist")
        }
        group.studentlist = group.studentlist.concat(update);
        console.log(group)
@@ -91,5 +97,10 @@ router.post('/group/removeuser/:id/:id2', auth, async(req,res)=>{
     res.send(group)
 })
 
+router.post('/checkgetlog',async(req,res)=>{
+    let str = 'https://api.twilio.com/2010-04-01/Accounts/AC898b219c14d15fb49aad768b898d8044/Messages/SM2af0db3d83f5483eb2301811ff5100d2.json'
+   let pp = await messagefeedback(str);
+    res.send(pp)
+})
 
 module.exports = router;

@@ -163,6 +163,11 @@ router.post('/student/key', async(req,res)=>{
         // let examid = req.body.testid;
         // const test  = await Test.findById({_id: examid})
         const test  = await Test.findById({_id: obj.testid})
+        let found = test.shakeysubmit.some(el => el.rollnumber === obj.rollnumber);
+        if(found)
+        {
+            return res.send("you have already submitted key")
+        }
         test.shakeysubmit = test.shakeysubmit.concat({rollnumber: obj.rollnumber, key: obj.key})
         await test.save()
         // console.log("done")
@@ -182,6 +187,11 @@ router.post('/student/answer',fileUpload.single('file'),async(req,res)=>{
         let answer_link = uploaded_file_data.secure_url;
         let rollnumber = req.body.rollnumber;
         const test = await Test.findById({_id: examid});
+        let found = test.answersubmit.some(el => el.rollnumber === rollnumber);
+        if(found)
+        {
+            return res.send("you have already submitted answer")
+        }
         test.answersubmit = test.answersubmit.concat({rollnumber: rollnumber,anssheet: answer_link });
         await test.save()
         res.send("answer submitted successfully")
@@ -201,8 +211,9 @@ router.get('/test/result/:id',auth,async(req,res)=>{
         let pdfarray = test.answersubmit;
         let starttime = test.starttime;
         let endtime  = test.endtime;
-        let examdate = test.date
-        let pp =  await resultfun(keyarray,pdfarray, starttime,endtime, examdate);
+        let examdate = test.date;
+        let  sendmessagestatus=test.sendmessagestatus
+        let pp =  await resultfun(keyarray,pdfarray, starttime,endtime, examdate,sendmessagestatus);
         res.send(pp)
     } catch (error) {
     }
@@ -223,7 +234,8 @@ router.post('/test/sendmessage',async(req,res)=>{
         studentlist.forEach((student)=>{
         numbers.push("+91"+student.phonenumber)
         })   
-        let msg = await Sendmessage(numbers,pdfpassword,testid);
+        // let msg = await Sendmessage(numbers,pdfpassword,testid);
+        let msg = await Sendmessage(studentlist,pdfpassword,testid);
         res.send(msg)
     } catch (error) {
         res.send('error')
@@ -247,8 +259,37 @@ router.get("/gtwiliomessage",async(req,res)=>{
 
 
 router.post('/trysendmessage',async(req,res)=>{
-    var chk = await  Sendmessage(['+917762845211','+917762845211','+917762845211'],'a6b9855e10fb06788d415b56e5a1bb6119019584db4d60ccacbb124bd4b1cc98','nwkjnedfefefeefefeefefe');
+    var chk = await  Sendmessage(['+917762845211'],'a6b9855e10fb06788d415b56e5a1bb6119019584db4d60ccacbb124bd4b1cc98','nwkjnedfefefeefefeefefe');
     res.send(chk);
 })
 
+
+router.post('/MessageStatus', (req, res) => {
+    const messageSid = req.body.MessageSid;
+    const messageStatus = req.body.MessageStatus;
+      console.log("pkkk")
+    console.log(`SID: ${messageSid}, Status: ${messageStatus}`);
+  
+    res.sendStatus(200);
+  });
+
+
+  router.post('/studenttest/key', async(req,res)=>{
+    let obj = twiliostring_function(req.body.pp);
+    try {
+        const test  = await Test.findById({_id: obj.testid})
+        let found = test.shakeysubmit.some(el => el.rollnumber === obj.rollnumber);
+        if(found)
+        {
+            return res.send("you have already submitted key")
+        }
+        test.shakeysubmit = test.shakeysubmit.concat({rollnumber: obj.rollnumber, key: obj.key})
+        await test.save()
+      
+        res.send('key submitted successfully')
+
+    } catch (error) {
+        return res.send('err')
+    }
+})
 module.exports = router;
