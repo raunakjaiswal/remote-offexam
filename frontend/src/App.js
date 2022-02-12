@@ -69,7 +69,7 @@ function App() {
               <Route path="/show-group/:id" component={ShowGrp} />
 
               <Route path="/show-test/:id" component={ShowTest} />
-              <Route path="/verify-students" component={VerifySt} />
+              <Route path="/verify-students/:id" component={VerifySt} />
             </>
           )}
 

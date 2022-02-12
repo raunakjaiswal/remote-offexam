@@ -28,7 +28,24 @@ function ShowTest(props) {
   }, [props.match.params.id]);
 
   function sendPass() {
-    // history.push();
+    var data1 = JSON.stringify({
+      testid: data._id,
+    });
+    var config = {
+      method: "post",
+      url: "https://remote-offexam-backend.herokuapp.com/test/sendmessage",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data1,
+    };
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   function sendOri() {
@@ -78,7 +95,12 @@ function ShowTest(props) {
           <button className={classes.button} onClick={sendEn}>
             Encrypted File
           </button>
-          <Link to="/verify-students" className={classes.button}>
+          <Link
+            to={{
+              pathname: `/verify-students/${data._id}`,
+            }}
+            className={classes.button}
+          >
             Verify Student
           </Link>
         </div>
@@ -86,7 +108,7 @@ function ShowTest(props) {
     );
   }
 
-  let down = <h1 className="my-cl4">Loading...</h1>;
+  let down = null;
   if (data !== null) {
     if (data.answersubmit.length !== 0) {
       down = (
@@ -112,7 +134,13 @@ function ShowTest(props) {
                           {val.key}
                         </td>
                         <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {val.submissiontime}
+                          {new Date(val.submissiontime).toLocaleString(
+                            "en-US",
+                            {
+                              timeZone: "Asia/Kolkata",
+                              hour12: false,
+                            }
+                          )}
                         </td>
                       </tr>
                     </tbody>
@@ -149,7 +177,13 @@ function ShowTest(props) {
                           </span>
                         </td>
                         <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {val.submissiontime}
+                          {new Date(val.submissiontime).toLocaleString(
+                            "en-US",
+                            {
+                              timeZone: "Asia/Kolkata",
+                              hour12: false,
+                            }
+                          )}
                         </td>
                       </tr>
                     </tbody>
@@ -160,8 +194,6 @@ function ShowTest(props) {
           </div>
         </div>
       );
-    } else {
-      down = null;
     }
   }
   return (

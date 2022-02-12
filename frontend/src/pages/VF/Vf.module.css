@@ -1,0 +1,42 @@
+.main {
+  width: 100%;
+  margin: 5rem auto;
+  text-align: center;
+}
+.showtable {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.table {
+  background-color: #11999e;
+  width: 100%;
+  height: 90%;
+}
+
+.th {
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid black;
+  /* color: black; */
+}
+
+.td1 {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  /* background-color: #11999e; */
+  background-color: #30e3ca;
+}
+
+.td2 {
+  text-align: center;
+  color: #000000;
+}
+
+.span {
+  cursor: pointer;
+}
