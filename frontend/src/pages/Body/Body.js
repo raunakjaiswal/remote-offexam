@@ -13,9 +13,10 @@ function Body(props) {
         </div>
         <div className={classes.middle}>
           <p>
-            Hey I am Raunak and I am the Sexiest boy at IIIT Vadodara. If You
-            feel alone dial my toll free number at any time, Services are
-            available 24*7. Call me now at 7762845211.
+            Students living in remote areas are experiencing difficulties
+            getting question papers and submitting scanned answer pdfs due to
+            internet issues So, we Remote Exam will help you to resolve this
+            Problem.
           </p>
         </div>
         <div className={classes.leftbottom}>
