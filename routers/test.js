@@ -11,14 +11,15 @@ const HummusRecipe = require('hummus-recipe');
 const axios = require('axios').default;
 const fs = require('fs');
 const pdf2base64 = require('pdf-to-base64');
-
+//require dotenv
 const Sendmessage= require('../twilio/sendmessage')
 require('dotenv').config();
 const FROM_NUMBER = '+18045757447';
 const AUTH_TOKEN = process.env.twilioauthtoken;
 const ACCOUNT_SID = process.env.twiliosid;
 const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN);
-
+const twiliostring_function = require('../function/twiliostring');
+const { CompositionSettingsList } = require('twilio/lib/rest/video/v1/compositionSettings');
 
 function makeid(length) {
     var result           = '';
@@ -123,19 +124,48 @@ router.get('/gettestdata/:id', auth,async(req,res)=>{
 })
 
 
+// router.post('')
+// router.post()
 
+
+
+// router.post('/passwordcheck',fileUpload.single('file'),async(req,res)=>{
+//     try {
+//         let uploaded_file_data=  await uploading(req.file.buffer)
+//         let file_link = uploaded_file_data.secure_url
+//         const pdfDoc = new HummusRecipe(file_link, '../data/output.pdf');
+//         pdfDoc
+//             .encrypt({
+//                 userPassword: '123',
+//                 ownerPassword: '123',
+//                 userProtectionFlag: 4
+//             })
+//             .endPDF();
+//             res.send("success")
+        
+//     } catch (error) {
+//         return res.send('err')
+//     }
+// })
 
 
 //submit student key 
 router.post('/student/key', async(req,res)=>{
     // console.log(req.body)
+    // console.log(req.body)
+    // console.log("yes")
+    // console.log(req.body.Body)
+    let obj = twiliostring_function(req.body.Body);
+    // console.log(obj)
     try {
-        let rollnumber = req.body.rollnumber;
-        let key = req.body.key;
-        let examid = req.body.testid;
-        const test  = await Test.findById({_id: examid})
-        test.shakeysubmit = test.shakeysubmit.concat({rollnumber: rollnumber, key: key})
+        // let rollnumber = req.body.rollnumber;
+        // let key = req.body.key;
+        // let examid = req.body.testid;
+        // const test  = await Test.findById({_id: examid})
+        const test  = await Test.findById({_id: obj.testid})
+        test.shakeysubmit = test.shakeysubmit.concat({rollnumber: obj.rollnumber, key: obj.key})
         await test.save()
+        // console.log("done")
         res.send('key submitted successfully')
 
     } catch (error) {
@@ -198,7 +228,6 @@ router.post('/test/sendmessage',async(req,res)=>{
     } catch (error) {
         res.send('error')
     }
-    
     
 })
 
