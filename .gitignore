@@ -1,6 +1,6 @@
 node_modules/
 .env
 
-/frontend/offSubmit/node_modules
-/frontend/offSubmit/build
+/frontend/node_modules
+/frontend/build
 
