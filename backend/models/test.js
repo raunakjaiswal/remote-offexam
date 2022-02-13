@@ -41,7 +41,7 @@ const TestSchema = new mongoose.Schema({
         rollnumber: {
             type: String,
             required: true,
-            unique: true,
+        
         },
         anssheet: {
           type: String,
@@ -50,7 +50,7 @@ const TestSchema = new mongoose.Schema({
         },
         submissiontime: {
             type: Date,
-            default: Date.now()
+            default: Date.now
         },
         verified: {
             type: Boolean,
@@ -61,7 +61,6 @@ const TestSchema = new mongoose.Schema({
        rollnumber: {
            type: String,
            required: true,
-           unique: true,
            
        },
        key:{
@@ -70,14 +69,13 @@ const TestSchema = new mongoose.Schema({
        },
        submissiontime: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     }],
     sendmessagestatus: [{
          rollnumber: {
              type: String,
              required: true,
-             unique: true,
          },
          uri: {
              type: String,
@@ -92,6 +90,10 @@ const TestSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         //required: true,
         ref: 'Group'
+    },
+    sendmessageonetime:{
+        type: Boolean,
+        default: false
     },
 
 },{ timestamps: true })

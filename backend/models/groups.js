@@ -15,11 +15,12 @@ const GroupSchema = new mongoose.Schema({
     studentlist: [{
         name: {
            type: String,
-           required: true
+           required: true,
+
         },
         rollnumber: {
             type: String,
-            required: true
+            required: true,
         },
         phonenumber: {
            type: Number,

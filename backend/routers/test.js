@@ -56,9 +56,10 @@ const uploading = (data) => {
 // create test
 router.post('/test', auth,fileUpload.single('file'),async(req,res)=>{
     try {
-        
+        // console.log("dtt")
+        // console.log(req.body.date)
         let pdf = req.file.buffer
-        console.log(pdf)
+        // console.log(pdf)
         fs.writeFileSync("./routers/test.pdf", pdf);
         let uploaded_file_data=  await uploading(req.file.buffer)
         console.log(uploaded_file_data)
@@ -117,6 +118,9 @@ router.get('/gettestdata/:id', auth,async(req,res)=>{
         let testid  = req.params.id;
         const test = await Test.findById({_id: testid});
         test.encryptedquestionpaper= "data:application/pdf;base64,"+test.encryptedquestionpaper
+        
+
+        // console.log({ss})
         res.send(test)
     } catch (error) {
         return res.send('err')
@@ -187,6 +191,9 @@ router.post('/student/answer',fileUpload.single('file'),async(req,res)=>{
         let answer_link = uploaded_file_data.secure_url;
         let rollnumber = req.body.rollnumber;
         const test = await Test.findById({_id: examid});
+        console.log(test)
+        console.log(test.answersubmit)
+        console.log(test.answersubmit.length)
         let found = test.answersubmit.some(el => el.rollnumber === rollnumber);
         if(found)
         {
@@ -225,6 +232,10 @@ router.post('/test/sendmessage',async(req,res)=>{
         let testid = req.body.testid;
         console.log(testid)
         let test =  await Test.findById({_id: testid})
+        if(test.sendmessageonetime==true)
+        {
+            return res.send("you have already sended mesaage to all students")
+        }
         let pdfpassword=  test.pdfpassword;
         let group = test.group;
         let groupdata = await Group.findById({_id: group});
@@ -234,6 +245,8 @@ router.post('/test/sendmessage',async(req,res)=>{
         studentlist.forEach((student)=>{
         numbers.push("+91"+student.phonenumber)
         })   
+        test.sendmessageonetime=true
+        await test.save()
         // let msg = await Sendmessage(numbers,pdfpassword,testid);
         let msg = await Sendmessage(studentlist,pdfpassword,testid);
         res.send(msg)
