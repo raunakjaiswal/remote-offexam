@@ -51,11 +51,11 @@ function CrtTest() {
     data.append("password", inputitem.password);
     // 2022 - 02 - 13;
     const formatDate =
-      parseInt(inputitem.date.slice(8)) +
-      "/" +
       parseInt(inputitem.date.slice(5, 7)) +
       "/" +
-      inputitem.date.slice(0, 5);
+      parseInt(inputitem.date.slice(8)) +
+      "/" +
+      parseInt(inputitem.date.slice(0, 4));
     data.append("date", formatDate);
     data.append("group", inputitem.group);
 

@@ -9,7 +9,7 @@ function Body(props) {
     <div className={classes.mainBody}>
       <div className={classes.leftBody}>
         <div className={classes.lefttop}>
-          <h1>Welcome to offExam</h1>
+          <h1>Welcome to Remote offSubmit</h1>
         </div>
         <div className={classes.middle}>
           <p>

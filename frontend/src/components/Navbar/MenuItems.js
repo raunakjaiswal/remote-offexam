@@ -1,5 +1,10 @@
 export const MenuItems = [
   {
+    title: "Home",
+    url: "/",
+    cName: "nav-links button-1",
+  },
+  {
     title: "Create Group",
     url: "/CreateGrp",
     cName: "nav-links button-1",

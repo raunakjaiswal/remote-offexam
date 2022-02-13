@@ -17,15 +17,15 @@ function Navbar(props) {
       <li
         className="nav-item"
         key={index}
-        onClick={index === 2 ? handleClick : null}
+        onClick={index === 3 ? handleClick : null}
       >
         <Link
           className={
             props.isUser
-              ? index === 3 || index === 4
+              ? index === 4 || index === 5
                 ? "hidden-button"
                 : item.cName
-              : index === 0 || index === 2 || index === 1
+              : index === 1 || index === 3 || index === 2 || index === 0
               ? "hidden-button"
               : item.cName
           }
@@ -43,7 +43,7 @@ function Navbar(props) {
       <nav className="navbar navbar-expand-lg navbar-dark bg-custom">
         <Link to="/" style={{ textDecoration: "none" }}>
           <h1 className="navbar-logo">
-            <i className="fab fa-react"></i> offExam
+            <i className="fab fa-react"></i> Remote offSubmit
           </h1>
         </Link>
         <button

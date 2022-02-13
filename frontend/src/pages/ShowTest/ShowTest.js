@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function ShowTest(props) {
   const [data, setData] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     var config = {
@@ -42,6 +43,7 @@ function ShowTest(props) {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        console.log(data.encryptedquestionpaper);
       })
       .catch(function (error) {
         console.log(error);
@@ -65,12 +67,25 @@ function ShowTest(props) {
     }
   }
 
+  function copy() {
+    const el = document.createElement("input");
+    el.value = data.encryptedquestionpaper;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setCopied(true);
+  }
+
   let up = <h1 className="my-cl4">Loading...</h1>;
   if (data !== null) {
     up = (
       <div className={classes.up}>
         <div className={classes.upleft}>
           <h3>{data.name}</h3>
+          <h6>
+            <strong>Test ID : {data._id}</strong>
+          </h6>
           <h6>
             <strong>Date : {data.date}</strong>
           </h6>
@@ -95,6 +110,9 @@ function ShowTest(props) {
           <button className={classes.button} onClick={sendEn}>
             Encrypted File
           </button>
+          <button className={classes.button} onClick={copy}>
+            {!copied ? "Copy File_link" : "Copied! File_link"}
+          </button>
           <Link
             to={{
               pathname: `/verify-students/${data._id}`,
@@ -108,89 +126,86 @@ function ShowTest(props) {
     );
   }
 
-  let down = null;
+  let downleft = null;
+  let downright = null;
   if (data !== null) {
-    if (data.answersubmit.length !== 0) {
-      down = (
-        <div className={classes.bottom}>
-          <div className={classes.bottomleft}>
-            <div className={classes.showtable}>
-              <table className={classes.table}>
-                <thead>
-                  <tr className={classes.tr}>
-                    <th className={classes.th}>Roll No.</th>
-                    <th className={classes.th}>SSH Key</th>
-                    <th className={classes.th}>Time</th>
-                  </tr>
-                </thead>
-                {data.shakeysubmit.map((val, key) => {
-                  return (
-                    <tbody key={key}>
-                      <tr className={classes.tr}>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {val.rollnumber}
-                        </td>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {val.key}
-                        </td>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {new Date(val.submissiontime).toLocaleString(
-                            "en-US",
-                            {
-                              timeZone: "Asia/Kolkata",
-                              hour12: false,
-                            }
-                          )}
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
+    if (data.shakeysubmit.length !== 0) {
+      downleft = (
+        <div className={classes.bottomleft}>
+          <div className={classes.showtable}>
+            <table className={classes.table}>
+              <thead>
+                <tr className={classes.tr}>
+                  <th className={classes.th}>Roll No.</th>
+                  <th className={classes.th}>SSH Key</th>
+                  <th className={classes.th}>Time</th>
+                </tr>
+              </thead>
+              {data.shakeysubmit.map((val, key) => {
+                return (
+                  <tbody key={key}>
+                    <tr className={classes.tr}>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        {val.rollnumber}
+                      </td>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        {val.key}
+                      </td>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        {new Date(val.submissiontime).toLocaleString("en-US", {
+                          timeZone: "Asia/Kolkata",
+                          hour12: false,
+                        })}
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
           </div>
-          <div className={classes.bottomright}>
-            <div className={classes.showtable}>
-              <table className={classes.table}>
-                <thead>
-                  <tr className={classes.tr}>
-                    <th className={classes.th}>Roll No.</th>
-                    <th className={classes.th}>PDF</th>
-                    <th className={classes.th}>Time</th>
-                  </tr>
-                </thead>
-                {data.answersubmit.map((val, key) => {
-                  return (
-                    <tbody>
-                      <tr className={classes.tr} key={key}>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {val.rollnumber}
-                        </td>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          <span className={classes.span}>
-                            <i
-                              className="fas fa-file-pdf"
-                              onClick={() => {
-                                window.open(val.anssheet);
-                              }}
-                            ></i>
-                          </span>
-                        </td>
-                        <td className={key % 2 ? classes.td2 : classes.td1}>
-                          {new Date(val.submissiontime).toLocaleString(
-                            "en-US",
-                            {
-                              timeZone: "Asia/Kolkata",
-                              hour12: false,
-                            }
-                          )}
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
-            </div>
+        </div>
+      );
+    }
+    if (data.answersubmit.length !== 0) {
+      downright = (
+        <div className={classes.bottomright}>
+          <div className={classes.showtable}>
+            <table className={classes.table}>
+              <thead>
+                <tr className={classes.tr}>
+                  <th className={classes.th}>Roll No.</th>
+                  <th className={classes.th}>PDF</th>
+                  <th className={classes.th}>Time</th>
+                </tr>
+              </thead>
+              {data.answersubmit.map((val, key) => {
+                return (
+                  <tbody>
+                    <tr className={classes.tr} key={key}>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        {val.rollnumber}
+                      </td>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        <span className={classes.span}>
+                          <i
+                            className="fas fa-file-pdf"
+                            onClick={() => {
+                              window.open(val.anssheet);
+                            }}
+                          ></i>
+                        </span>
+                      </td>
+                      <td className={key % 2 ? classes.td2 : classes.td1}>
+                        {new Date(val.submissiontime).toLocaleString("en-US", {
+                          timeZone: "Asia/Kolkata",
+                          hour12: false,
+                        })}
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
           </div>
         </div>
       );
@@ -199,7 +214,10 @@ function ShowTest(props) {
   return (
     <div className={classes.main}>
       {up}
-      {down}
+      <div className={classes.bottom}>
+        {downleft}
+        {downright}
+      </div>
     </div>
   );
 }

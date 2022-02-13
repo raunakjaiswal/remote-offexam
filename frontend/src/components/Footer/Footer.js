@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="Row1">
           <div className="Heading1">
             <strong className="my-color">
-              offExam, Inc. All rights reserved.
+              Remote offSubmit, Inc. All rights reserved.
             </strong>
           </div>
           <div className="Column1">
