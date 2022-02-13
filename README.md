@@ -8,32 +8,51 @@
 
 
 # for fronted
+
 command to run : 
+</br>
 npm install
+</br>
 npm start
+</br>
 
 
 # for backend
 required credential are as follows:_
-
+</br>
 cloudinary-
+</br>
     cloudname
+    </br>
     apikey
+    </br>
     apisecretkey
+    </br>
 Monogodb-
+</br>
     mongourl
+    </br>
 Twilio-
+</br>
     twilioauthtoken
+    </br>
     twilioauthsid
+    </br>
 
 command to run : 
+</br>
 npm install
+</br>
 npm run dev
-
+</br>
 
 # for app
-command to run : 
+command to run :
+</br> 
 npm install
+</br>
 npm start
+</br>
 run on android/ios
+</br>
 
