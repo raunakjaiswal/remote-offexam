@@ -1,5 +1,6 @@
-# remote-offexam
+# Remote-Offexam
 
+# Demo
 [Drive Link (Presentation,Demo,APK)](https://drive.google.com/drive/folders/1q6HaLUyF_4Pi2-s8PLVlBb9YNP5j7NUY?usp=sharing)
 
 [Frontend - live link](https://remote-offexam-frontend.netlify.app/)
@@ -7,52 +8,69 @@
 [Backend - live link](https://remote-offexam-backend.herokuapp.com)
 
 
-# for fronted
+# Problem Statement
+* The Pandemic induced many issues for Students appearing for online exams.<br><br>
+* Students living in remote areas experienced<br>
+&emsp;1. difficulties in maintaining proper internet connection during the exams.<br>
+&emsp;2. submitting and recieving answer books and question papers due to internet problems.<br><br>
+* There's a need to create a app which works seemlessly to solve this problem.<br> 
+* Objective of the project is to create an application which will help both students and teachers<br>
 
-command to run : 
-</br>
+# Solution
+* The Teacher will create a group and add Students in it
+* The Teacher will create a test and upload the pdf of question paper
+* The app will encrypt the pdf with a password teacher entered at the time of uploading
+* The encrypted question paper will be sent to the students beforehand (10-15 days before the exam)
+* The password to the pdf will be sent to the students at the time of the test using SMS (Twilio API)
+* The student will give the test and when the time is finished they will upload the pdf on the app
+* If there's an Internet issue at student's end, A SHA256 key will be sent to the teacher
+* When the problem is resolved at the student's end they can upload the pdf
+* The app will verify the uploaded pdf with the submitted SHA256 key and if it is successfully verified the job's done!
+
+
+# Frontend 
+```js
 npm install
-</br>
+```
+```js
 npm start
+```
 </br>
 
 
-# for backend
+# Backend
 required credential are as follows:_
-</br>
+```
 cloudinary-
-</br>
     cloudname
-    </br>
-    apikey
-    </br>
-    apisecretkey
-    </br>
+    apikey = api-key
+    apisecretkey = api-secret
 Monogodb-
-</br>
-    mongourl
-    </br>
+    mongourl = your-mongo-url
 Twilio-
-</br>
-    twilioauthtoken
-    </br>
-    twilioauthsid
-    </br>
+    twilioauthtoken = your-twilio-auth-token
+    twilioauthsid = your-twilio-auth-sid
+```
 
 command to run : 
 </br>
+```
 npm install
-</br>
+```
+```
 npm run dev
+```
 </br>
 
-# for app
+# For app
 command to run :
 </br> 
+```
 npm install
-</br>
+```
+```
 npm start
+```
 </br>
-run on android/ios
-</br>
+Run on android/ios
 
